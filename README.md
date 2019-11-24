@@ -15,5 +15,8 @@ Second, (write later).................... new architecture: auto sig encoder (AS
 Third, (write later).................... more elaborated variante: variational auto sig encoder (VASE)
 
 
-# Code architecture:
-(write later)
+# Technical informations:
+- Exclusively using Python 3.6.
+- The .env environment lives in the base folder; all dependencies are set in /auto-sig-encoder/build/requirements.txt
+- To build/update the environment as well as update the repo, run /auto-sig-encoder/build/build.sh
+- The running of the experiment is done via the scripts in /auto-sig-encoder/run_files
