@@ -14,9 +14,13 @@ Second, (write later).................... new architecture: auto sig encoder (AS
 
 Third, (write later).................... more elaborated variante: variational auto sig encoder (VASE)
 
+# How to use the repo:
+1. Run /auto-sig-encoder/build/build.sh to update the repo, install the modules and set the environment.
+2. Run the experiment you want in /auto-sig-encoder/run_files.
 
-# Technical informations:
+# Technical informations and code architecture:
 - Exclusively using Python 3.6.
-- The .env environment lives in the base folder; all dependencies are set in /auto-sig-encoder/build/requirements.txt
+- Repo. structured into 4 folders ("src" for the back-end computations, "data_set" for the data preparation, "build" for the building of the dependance and "run_files" to run the experiments)
+- The .env environment lives in the base folder /auto-sig-encoder/; all the used modules are set in /auto-sig-encoder/build/requirements.txt 
 - To build/update the environment as well as update the repo, run /auto-sig-encoder/build/build.sh
 - The running of the experiment is done via the scripts in /auto-sig-encoder/run_files
