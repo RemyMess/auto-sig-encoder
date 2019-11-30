@@ -2,3 +2,5 @@ numpy==1.16.4
 pandas==0.24.2
 pandas-datareader
 iisignature
+seaborn
+pprint
