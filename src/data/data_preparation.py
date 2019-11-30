@@ -14,18 +14,29 @@ class data_set_1:
     """
     Data set consisting of handwritten_digits, cf.
     """# import source modules
-    def __init__(self):
+    def __init__(self, sorting_data=True):
         self.name = "handwritten_digits"
-        self.dir_name = os.getcwd()[:os.getcwd().] + "/src/data/raw_data/handwritten/"
+        self.dir_name = os.getcwd().replace("/src/data/", "").replace("run_files", "src")\
+                            .replace("/data", "") + "/data/raw_data/handwritten/"
         self.training_X = np.array([[]])
         self.training_Y = np.array([])
         self.test_X = np.array([[]])
         self.test_Y = np.array([])
 
+        self.training_X_ordered = {}
+        self.test_X_ordered = {}
+
+        # Data processing
+        self.process_data()
+        if sorting_data:
+            self.data_sorting()
+
     def process_data(self):
         for mode in ["tes", "tra"]:
             if mode == "tes":
                 cross_val_set = "training"
+            elif mode == "tra":
+                cross_val_set = "test"
 
             X_data, Y_data = [], []
 
@@ -39,7 +50,17 @@ class data_set_1:
             setattr(self, cross_val_set + "_X", np.array(X_data))
             setattr(self, cross_val_set + "_Y", np.array(Y_data))
 
+    def data_sorting(self):
+        for data_container in ["training_X", "test_X"]:
+            index_tracker = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []}
 
+            for index in range(len(getattr(self, data_container))):
+                number = getattr(self, data_container[:-1] + "Y")[index]
+                index_tracker[int(number)].append(index)
+
+            for i in index_tracker.keys():
+                data = getattr(self, data_container)[index_tracker[i]]
+                getattr(self, data_container + "_ordered")[i] = data
 
 class data_set_2:
     """
@@ -48,8 +69,7 @@ class data_set_2:
     def __init__(self):
         pass
 
-
-# unit test
-obj = data_set_1()
-obj.process_data()
-print(obj.training_X)
+if __name__ == "__main__":
+    # unit test
+    obj = data_set_1()
+    print(obj.training_X_ordered)
