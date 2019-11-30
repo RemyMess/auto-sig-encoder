@@ -2,7 +2,7 @@
 #
 
 # Homebrew
-#
+import iisignature
 
 class sig_computer:
     """
