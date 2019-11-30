@@ -1,7 +1,7 @@
 """
-Script orchestrating running of sig compression of data and its inversion using algo in
-"Inverting the signature of a path", https://arxiv.org/abs/1406.7833
+Script generating plots for handwritten number data set: signature and log sig terms
 """
+
 
 # Build-ins import
 import os, sys, inspect
@@ -23,11 +23,21 @@ import base.auto_encoders
 from data.data_preparation import data_set_1
 
 
-# 1. setting auto-encoder
-pass
-
-# 2. Transforming data into signature
-sig = iisignature.sig(handwritting_ds.training_X_ordered[1], 3)
+# 1. Transforming data into signature
 handwritting_ds = data_set_1()
+sig = iisignature.sig(handwritting_ds.training_X_ordered[1], 3)
 
-# 3. Start training
+# 2. Plotting the sig of all the paths of same category together
+sns.set(style="darkgrid")
+df = pd.DataFrame(sig[46])
+
+print(df[0])
+print(df.index)
+
+
+plt.show()
+#
+#
+#
+# todo
+#
