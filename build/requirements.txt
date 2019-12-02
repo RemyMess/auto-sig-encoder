@@ -4,3 +4,5 @@ pandas-datareader
 iisignature
 seaborn
 pprint
+keras
+tensorflow
