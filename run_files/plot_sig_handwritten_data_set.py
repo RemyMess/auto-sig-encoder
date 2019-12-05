@@ -56,14 +56,14 @@ def save_plot_sig_logsig_handwritten_data():
             axs_sig[i].plot(sig_df.values)
             fig_sig.savefig(f"/home/raymess-lin/git/auto-sig-encoder/plots/handwritten_sig_k_{truncation_order}.png")
 
-# sig
-pretrans_data = [[i, 2*i] for i in range(10)]
-trans_data = iisignature.sig(pretrans_data, 3)
-print(trans_data)
+# # sig
+# pretrans_data = [[i, 2*i] for i in range(10)]
+# trans_data = iisignature.sig(pretrans_data, 3)
+# print(trans_data)
+#
+# # logsig
 
-# logsig
-
-
-
-plt.plot(trans_data)
-plt.savefig("/home/raymess-lin/git/auto-sig-encoder/plots/simple_plot_straight_line_sig_3.png")
+save_plot_sig_logsig_handwritten_data()
+#
+# plt.plot(trans_data)
+# plt.savefig("/home/raymess-lin/git/auto-sig-encoder/plots/simple_plot_straight_line_sig_3.png")

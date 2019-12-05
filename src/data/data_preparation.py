@@ -18,6 +18,7 @@ class data_set_1:
         self.name = "handwritten_digits"
         self.dir_name = os.getcwd().replace("/src/data/", "").replace("run_files", "src")\
                             .replace("/data", "") + "/data/raw_data/handwritten/"
+        self.rescaling = 50
         self.training_X = np.array([[]])
         self.training_Y = np.array([])
         self.test_X = np.array([[]])
@@ -43,7 +44,7 @@ class data_set_1:
             with open(self.dir_name + f"pendigits.{mode}") as raw_data:
                 for line in raw_data:
                     list_line = line.replace(" ", "").replace("\n", "").split(",")
-                    duets = [[int(list_line[i]), int(list_line[i+1])] for i in range(9)]
+                    duets = [[int(list_line[i]) / self.rescaling, int(list_line[i+1]) / self.rescaling] for i in range(9)]
                     X_data.append(duets)
                     Y_data.append(list_line[-1])
 

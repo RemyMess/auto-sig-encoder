@@ -19,7 +19,7 @@ package_dir = os.path.dirname(current_dir).replace("run_files", "") + "/src"
 sys.path.insert(0, package_dir)
 import base.sig_computer
 import numpy as np
-np.set_printoptions(threshold=sys.maxsize)  # allows to print more elements in the line
+# np.set_printoptions(threshold=sys.maxsize)  # allows to print more elements in the line
 import base.inverse_sig_computer
 from base.auto_encoders import auto_encoder_shallow
 from data.data_preparation import data_set_1
@@ -30,19 +30,34 @@ handwritting_ds = data_set_1(sorting_data=True)
 sig_data_train = np.float32(iisignature.sig(handwritting_ds.training_X, 5))
 sig_data_test = np.float32(iisignature.sig(handwritting_ds.test_X, 5))
 
+single_data_point = np.array(handwritting_ds.training_X[0], dtype=np.float32)
+
+print(single_data_point)
+print(single_data_point.shape)
+print(iisignature.sig(single_data_point, 5))
+
+
 shape_single_data_point = sig_data_train[0].shape
 
 # 2. Setting and training auto-encoders
-auto_encoder = auto_encoder_shallow(encoding_dim=5, input_shape=shape_single_data_point)
-auto_encoder.train(training_set=sig_data_train, test_set=sig_data_test, epochs=2)
+auto_encoder = auto_encoder_shallow(encoding_dim=50, input_shape=shape_single_data_point)
+auto_encoder.train(training_set=sig_data_train, test_set=sig_data_test, epochs=200)
 
 # 3. Plotting difference between training
 encoded_data = auto_encoder.encoder.predict(sig_data_test)
 decoded_data = auto_encoder.decoder.predict(encoded_data)
 
+
+plt.plot()
+
+
+
+
+
+
 print("sig_data_test")
 # print(sig_data_test)
-print(type(sig_data_test[0][0]))
+print(sig_data_test)
 
 print("encoded data")
 print(encoded_data)

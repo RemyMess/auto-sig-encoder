@@ -28,7 +28,7 @@ class auto_encoder_shallow:
 
     def train(self, training_set, test_set, epochs=50, batch_size=10, shuffle=True):
         # 1) start training and extract encoder/decoder
-        self.autoencoder.compile(optimizer="adadelta", loss="binary_crossentropy")
+        self.autoencoder.compile(optimizer="adadelta", loss="mean_squared_error")  # binary_crossentropy
         self.autoencoder.fit(training_set, training_set,
                              epochs=epochs,
                              batch_size=batch_size,
