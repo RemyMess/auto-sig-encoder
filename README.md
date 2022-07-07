@@ -14,7 +14,7 @@ In this project, we are interested to compare the theoretically well-established
 2. Run the experiment you want in /auto-sig-encoder/run_files.
 
 # Technical informations and code architecture:
-- Exclusively using Python 3.6.
+- Written and tested for Python 3.6.
 - Repo. structured into 4 folders ("src" for the back-end computations, "data_set" for the data preparation, "build" for the building of the dependance and "run_files" to run the experiments)
 - The .env environment lives in the base folder /auto-sig-encoder/; all the used modules are set in /auto-sig-encoder/build/requirements.txt 
 - To build/update the environment as well as update the repo, run /auto-sig-encoder/build/build.sh
